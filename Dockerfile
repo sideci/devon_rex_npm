@@ -6,5 +6,9 @@ ENV YARN_VERSION=1.17.3
 
 RUN curl -sSL https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz \
     | tar -C /usr/local -x --xz --strip 1
+
 RUN npm install -g npm@$NPM_VERSION
-RUN curl -o- -sSL https://yarnpkg.com/install.sh | bash -s -- --version $YARN_VERSION
+
+RUN curl -o- -sSL https://yarnpkg.com/install.sh | bash -s -- --version $YARN_VERSION \
+    && ln -s $HOME/.yarn/bin/yarn /usr/local/bin/yarn \
+    && ln -s $HOME/.yarn/bin/yarnpkg /usr/local/bin/yarnpkg
