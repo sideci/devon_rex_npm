@@ -18,4 +18,5 @@ RUN cd /tmp \
     && curl -fsSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc" \
     && curl -fsSL --compressed "https://dl.yarnpkg.com/debian/pubkey.gpg" | gpg --import \
     && gpg --verify "yarn-v$YARN_VERSION.tar.gz.asc" \
-    && tar -xzf "yarn-v$YARN_VERSION.tar.gz" -C /usr/local --strip-components=1
+    && tar -xzf "yarn-v$YARN_VERSION.tar.gz" -C /usr/local --strip-components=1 \
+    && rm -rf "yarn-v$YARN_VERSION.tar.gz" "yarn-v$YARN_VERSION.tar.gz.asc"
